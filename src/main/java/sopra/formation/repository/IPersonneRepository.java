@@ -15,5 +15,5 @@ public interface IPersonneRepository extends IRepository<Personne, Long> {
 
 	Formateur findFormateurByEmail(String email); // TODO
 	
-	List<Formateur> findAllFormateur(Long idMatiere);
+	List<Formateur> findAllFormateurByMatiere(Long idMatiere);
 }

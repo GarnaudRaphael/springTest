@@ -60,7 +60,7 @@ public class ApplicationConfig {
 //	On précise les propriétés du provider (Hibernate) ...
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.hbm2ddl.auto", "update");
+		properties.setProperty("hibernate.hbm2ddl.auto", "create");
 		properties.setProperty("hibernate.dialect", env.getProperty("db.dialect"));
 		properties.setProperty("hibernate.show_sql", "true");
 		return properties;

@@ -76,7 +76,7 @@ public class PersonneRepositoryJpa implements IPersonneRepository {
 	}
 
 	@Override
-	public List<Formateur> findAllFormateur(Long idMatiere) {
+	public List<Formateur> findAllFormateurByMatiere(Long idMatiere) {
 //			TypedQuery<Formateur> query = em.createQuery("select f from Formateur f join f.competences m where m.id = :id", Formateur.class);
 		TypedQuery<Formateur> query = em.createQuery("select f from Matiere m join m.formateurs f where m.id = :id",
 				Formateur.class);
