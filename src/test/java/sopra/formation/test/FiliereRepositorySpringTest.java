@@ -11,6 +11,7 @@ import sopra.formation.config.ApplicationConfig;
 import sopra.formation.model.Dispositif;
 import sopra.formation.model.Filiere;
 import sopra.formation.model.Formateur;
+import sopra.formation.model.Stagiaire;
 import sopra.formation.repository.IFiliereRepository;
 import sopra.formation.repository.IPersonneRepository;
 
@@ -129,4 +130,18 @@ public class FiliereRepositorySpringTest {
 		
 		System.out.println("testfindByIdWithReferent Début ###################");
 	}
+	
+	@Test
+	public void findByPromotion() {
+		Filiere tpt = new Filiere("TPTUNIQUE");
+		Stagiaire aurelienDispot = new Stagiaire("aurelien.dispot@gmail.com");
+		
+		tpt.getStagiaires().add(aurelienDispot);
+		tpt = filiereRepo.save(tpt);
+		
+		Filiere tptFind = filiereRepo.findByPromotion("TPTUNIQUE");
+		
+		Assert.assertEquals(tpt.getId(), tptFind.getId());
+	}
+	
 }
