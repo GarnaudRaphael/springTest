@@ -1,6 +1,5 @@
 package sopra.formation.test;
 
-import org.hibernate.internal.build.AllowSysOut;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
