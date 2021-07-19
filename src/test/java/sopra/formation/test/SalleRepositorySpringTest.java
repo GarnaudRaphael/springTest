@@ -8,7 +8,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import sopra.formation.config.ApplicationConfig;
-import sopra.formation.model.Evaluation;
 import sopra.formation.model.Salle;
 import sopra.formation.repository.ISalleRepository;
 
@@ -48,19 +47,19 @@ public class SalleRepositorySpringTest {
 
 		Salle salle1find = salleRepo.findById(salle1.getId());
 
-		salle1find.setNom("Ruche");
-		salle1find.setTechnique(2);
-		salle1find.setCommentaires("hello");
+		salle1find.setNom("BZZZZZZZZ");
+		salle1find.setCapacite(5);
+		salle1find.setVideoProjecteur(false);
 
 		salle1find = salleRepo.save(salle1find);
 
 		salle1find = salleRepo.findById(salle1find.getId());
 
-		Assert.assertEquals((Integer) 32, salle1find.getComportemental());
+		Assert.assertEquals("BZZZZZZZZ", salle1find.getNom());
 
-		Assert.assertEquals((Integer) 2, salle1find.getTechnique());
+		Assert.assertEquals((Integer) 5, salle1find.getCapacite());
 		
-		Assert.assertEquals("hello", salle1find.getCommentaires());
+		Assert.assertEquals(false, salle1find.getVideoProjecteur());
 
 		System.out.println("testModify Fin ###################");
 	}
@@ -69,17 +68,17 @@ public class SalleRepositorySpringTest {
 	public void delete() {
 		System.out.println("testDelete Début ###################");
 
-		Evaluation eval1 = new Evaluation(32, 2, "hello");
+		Salle salle1 = new Salle("Ruche", 42, true);
 
-		eval1 = salleRepo.save(eval1);
+		salle1 = salleRepo.save(salle1);
 
-		Evaluation eval1find = salleRepo.findById(eval1.getId());
+		Salle salle1eval = salleRepo.findById(salle1.getId());
 
-		salleRepo.delete(eval1find);
+		salleRepo.delete(salle1eval);
 
-		eval1find = salleRepo.findById(eval1.getId());
+		salle1eval = salleRepo.findById(salle1.getId());
 
-		Assert.assertNull(eval1find);
+		Assert.assertNull(salle1eval);
 
 //		if(htmlFind != null) {
 //			Assert.fail("La suppression de la matière a échouée");
@@ -94,13 +93,13 @@ public class SalleRepositorySpringTest {
 
 		int sizeStart = salleRepo.findAll().size();
 
-		Evaluation eval1 = new Evaluation(32, 2, "hello");
+		Salle salle1 = new Salle("Ruche", 42, true);
 
-		eval1 = salleRepo.save(eval1);
+		salle1 = salleRepo.save(salle1);
 
-		Evaluation eval2 = new Evaluation(100, 10, "RageQuit");
+		Salle salle2 = new Salle("Track", 10, false);
 
-		eval2 = salleRepo.save(eval2);
+		salle2 = salleRepo.save(salle2);
 
 		int sizeEnd = salleRepo.findAll().size();
 
